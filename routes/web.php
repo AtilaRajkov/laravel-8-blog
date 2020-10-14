@@ -4,7 +4,7 @@ use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
 
 /*
-|--------------------------------------------------------------------------
+|---------------------------- ----------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
 |
@@ -29,4 +29,6 @@ Route::get('/author/{author}', [BlogController::class, 'author'])
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\Backend\HomeController::class, 'index'])->name('home');
+
+Route::resource('/backend/blog', App\Http\Controllers\Backend\BlogController::class);

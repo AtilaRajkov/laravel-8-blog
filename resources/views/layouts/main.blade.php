@@ -24,7 +24,11 @@
         <a class="navbar-brand" href="{{route('blog.index')}}">
           MyBlog
         </a>
+
+
+
       </div>
+
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="the-navbar-collapse">
@@ -34,6 +38,28 @@
           </li>
           <li><a href="#">About</a></li>
           <li><a href="#">Contact</a></li>
+
+          @guest
+          <li>
+            <a href="{{route('login')}}">Login</a>
+          </li>
+          @endguest
+
+          @auth
+          <li>
+            <a href="{{url('/home')}}">Dashboard</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="{{ route('logout') }}"
+               onclick="event.preventDefault();
+                 document.getElementById('logout-form').submit();">
+              {{ __('Logout') }}
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+              @csrf
+            </form>
+          </li>
+          @endauth
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container -->
